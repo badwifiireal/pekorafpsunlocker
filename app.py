@@ -58,7 +58,7 @@ def safe_patch_fps():
             if mbi.Protect == 0x04: 
                 pm.write_bytes(addr, new_bytes, len(new_bytes))
                 patched_count += 1
-                print(f" -> Safely patched address: 0x{addr:X}")
+                print(f" -> patched address: 0x{addr:X}")
         except Exception:
             continue
 
