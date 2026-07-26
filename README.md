@@ -15,3 +15,5 @@ ur fps limit will be uncapped :D
 important note!!!
 
 if u close the game and join another game/server, just run the app again while in-game.
+
+enjoy!!!! :D
