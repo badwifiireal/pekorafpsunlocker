@@ -4,20 +4,14 @@ import pymem
 import pymem.process
 import pymem.ptypes
 
-# Process list
 CANDIDATE_PROCESSES = [
     "ProjectXPlayerBeta.exe",
-    "2017L.exe",
-    "2018L.exe",
-    "2020L.exe",
-    "2021M.exe",
-    "PekoraPlayer.exe",
     "ProjectXPlayer.exe",
 ]
 
 TARGET_FPS = 999
 TARGET_INTERVAL = (1.0 / TARGET_FPS) if TARGET_FPS > 0 else 0.0
-DEFAULT_60FPS_INTERVAL = 1.0 / 60.0  # ~0.016666666666666666
+DEFAULT_60FPS_INTERVAL = 1.0 / 60.0 
 
 
 def safe_patch_fps():
@@ -44,7 +38,6 @@ def safe_patch_fps():
 
     patched_count = 0
 
-    # Iterate through process memory regions manually to filter write permission
     try:
         matches = pm.pattern_scan_all(old_bytes, return_multiple=True)
         if isinstance(matches, int):
@@ -61,9 +54,8 @@ def safe_patch_fps():
 
     for addr in matches:
         try:
-            # Query memory page info to ensure it is writeable data (PAGE_READWRITE = 0x04)
             mbi = pymem.memory.virtual_query(pm.process_handle, addr)
-            if mbi.Protect == 0x04:  # PAGE_READWRITE
+            if mbi.Protect == 0x04: 
                 pm.write_bytes(addr, new_bytes, len(new_bytes))
                 patched_count += 1
                 print(f" -> Safely patched address: 0x{addr:X}")
