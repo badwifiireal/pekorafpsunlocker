@@ -2,7 +2,7 @@ pekora fps unlocker
 
 unlocks ur fps on pekora client instantly.
 
-how to use
+how to use:
 
 open pekora and join ur game first.
 
