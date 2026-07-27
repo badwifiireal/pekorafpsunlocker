@@ -28,7 +28,7 @@ def safe_patch_fps():
             continue
 
     if not pm:
-        print("Could not find running game process!")
+        print("could not find running game process :(")
         return
 
     old_bytes = struct.pack("<d", DEFAULT_60FPS_INTERVAL)
